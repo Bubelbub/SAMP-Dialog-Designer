@@ -10,3 +10,17 @@ C:\Dokumente und Einstellungen\Admin\Eigene Dateien\Visual Studio 2008\Projects\
 C:\Dokumente und Einstellungen\Admin\Eigene Dateien\Visual Studio 2008\Projects\PAWNCoder\PAWNCoder\bin\Debug\PAWNCoder.application
 C:\Dokumente und Einstellungen\Admin\Eigene Dateien\Visual Studio 2008\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.exe.manifest
 C:\Dokumente und Einstellungen\Admin\Eigene Dateien\Visual Studio 2008\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.application
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.exe
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.pdb
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\bin\Debug\PAWNCoder.exe.manifest
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\bin\Debug\PAWNCoder.application
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\bin\Debug\PAWNCoder.exe
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\bin\Debug\PAWNCoder.pdb
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.Form1.resources
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.Properties.Resources.resources
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.exe.manifest
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\obj\Debug\PAWNCoder.application
+C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder\bin\Debug\PAWNCoder.exe.config

@@ -18,6 +18,8 @@ namespace PAWNCoder
         [DllImport("User32.dll")]
         static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int[] lParam);
         bool check = false;
+        Color standard;
+        PAWNCoder.Properties.Settings lastcoding = new PAWNCoder.Properties.Settings();
         public Form1()
         {
             Timer timer = new Timer();
@@ -25,7 +27,7 @@ namespace PAWNCoder
             timer.Tick += new EventHandler(timerevent);
             timer.Start();
             InitializeComponent();
-            textBox1.Text = "Dein Dialogcode hier";
+            textBox1.Text = lastcoding.lastcode;
             label2.Text = textBox1.Text.Length.ToString() + " Zeichen";
             var pos = this.PointToScreen(label1.Location);
             pos = pictureBox2.PointToClient(pos);
@@ -41,11 +43,12 @@ namespace PAWNCoder
 
             this.textBox1.KeyDown += new KeyEventHandler(textBox1_KeyDown);
             this.textBox2.KeyDown += new KeyEventHandler(textBox2_KeyDown);
-            int[] tabstops = new int[] { 26 };
+            int[] tabstops = new int[] { 23 };
             SendMessage(textBox1.Handle, EM_SETTABSTOPS, tabstops.Length, tabstops);
             textBox1.Invalidate();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            standard = label1.ForeColor;
         }
         private void timerevent(Object e, EventArgs unused)
         {
@@ -62,6 +65,7 @@ namespace PAWNCoder
                     pictureBox1.Location.Y + pictureBox2.Location.Y + pictureBox2.Height - 35);
                 pictureBox4.Location = p;
                 string[] lines = Regex.Split(label1.Text, "\r\n");
+                lastcoding.Save();
             }
             check = false;
         }
@@ -70,6 +74,7 @@ namespace PAWNCoder
             //label1.Text = textBox1.Text;
             int index = label1.Text.IndexOf('\t');
             label2.Text = textBox1.Text.Length.ToString() + " Zeichen";
+            lastcoding.lastcode = textBox1.Text;
         }
         private void textBox1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
@@ -112,13 +117,19 @@ namespace PAWNCoder
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string blubb = textBox1.Text.Replace('\t'.ToString(), ";");
             string[] lines = Regex.Split(textBox1.Text, "\r\n");
             lines[0] = lines[0].Replace('\t'.ToString(), "\\t");
             lines[0] = Regex.Replace(lines[0], '"'.ToString(), "\\\"");
             lines[0] = Regex.Replace(lines[0], '"'.ToString(), "\\\"");
             lines[0] = Regex.Replace(lines[0], '%'.ToString(), "%%");
-            textBox2.Text = "new str[" + textBox1.Text.Length + "];\r\nformat(str,sizeof str,\"" + lines[0] + ""+ ( ( lines.Length > 1 ) ? "\\n" : "" )+"\");";
+            string colorcode = "";
+            if (label1.ForeColor != standard)
+            {
+				colorcode = string.Format("0x{0:X8}", label1.ForeColor.ToArgb());
+				colorcode = colorcode.Substring(colorcode.Length - 6, 6);
+            }
+            textBox2.Text = "new str[" + ((colorcode != "") ? textBox1.Text.Length + colorcode.Length + 2 : textBox1.Text.Length) + "];\r\nformat(str,sizeof str,\"" + ((colorcode != "") ? "{" + colorcode + "}" : "") + "" + lines[0] + "" + ((lines.Length > 1) ? "\\n" : "") + "\");";
+
             for (int i = 1; i < lines.Length; i++)
             {
                 lines[i] = lines[i].Replace('\t'.ToString(), "\\t");
@@ -130,10 +141,21 @@ namespace PAWNCoder
                     textBox2.Text = textBox2.Text + "\r\nformat(str,sizeof str,\"%s" + lines[i] + "" + ((i == lines.Length - 1) ? "" : "\\n") + "\",str);";
             }
             textBox2.Text = textBox2.Text + "\r\nShowPlayerDialog(playerid,dialogid,"+ comboBox1.Text +",\"Headline\",str,\"Ok!\",\"\");";
+        }
 
-            
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.AllowFullOpen = true;
+            colorDlg.FullOpen = true;
+            colorDlg.AnyColor = true;
+            colorDlg.SolidColorOnly = false;
+            colorDlg.Color = label1.ForeColor;            
+            if (colorDlg.ShowDialog() == DialogResult.OK)
+            {
+                label1.ForeColor = colorDlg.Color;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

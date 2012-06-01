@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PAWNCoder">
+</Property><Property Name="Projektmappendatei" Value="C:\Users\PatrickB\Documents\Visual Studio 2010\Projects\PAWNCoder\PAWNCoder.sln">
+</Property><Property Name="Date" Value="Freitag, 1. Juni 2012">
+</Property><Property Name="Time" Value="17:29">
+</Property></Properties><Event ErrorLevel="0" Project="PAWNCoder" Source="PAWNCoder\PAWNCoder.csproj" Description="Projekt erfolgreich konvertiert">
+</Event><Event ErrorLevel="3" Project="PAWNCoder" Source="PAWNCoder\PAWNCoder.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="PAWNCoder.sln" Description="Die Projektmappe wurde erfolgreich konvertiert.">
+</Event><Event ErrorLevel="3" Project="" Source="PAWNCoder.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PAWNCoder" Source="PAWNCoder\PAWNCoder.csproj" Description="Überprüfung abgeschlossen: Upgrade der Projektdateien nicht erforderlich.">
+</Event></UpgradeLog>

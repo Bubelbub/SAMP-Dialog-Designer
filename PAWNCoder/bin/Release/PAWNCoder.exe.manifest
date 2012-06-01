@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PAWNCoder.exe" size="355840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PAWNCoder.exe" size="355328">
       <assemblyIdentity name="PAWNCoder" version="0.0.1.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ohFQa5cj9/h+aPGrbczP2uEMO18=</dsig:DigestValue>
+        <dsig:DigestValue>oC9xb9V1DCKkZlagJic2NPnAFh8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
