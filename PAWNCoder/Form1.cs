@@ -18,7 +18,6 @@ namespace PAWNCoder
         [DllImport("User32.dll")]
         static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int[] lParam);
         bool check = false;
-        Color standard;
         PAWNCoder.Properties.Settings lastcoding = new PAWNCoder.Properties.Settings();
         public Form1()
         {
@@ -27,8 +26,8 @@ namespace PAWNCoder
             timer.Tick += new EventHandler(timerevent);
             timer.Start();
             InitializeComponent();
-            textBox1.Text = lastcoding.lastcode;
-            label2.Text = textBox1.Text.Length.ToString() + " Zeichen";
+            try { richTextBox1.LoadFile("PAWNCoder.last", RichTextBoxStreamType.RichText); } catch { }
+            label2.Text = richTextBox1.Text.Length.ToString() + " Zeichen";
             var pos = this.PointToScreen(label1.Location);
             pos = pictureBox2.PointToClient(pos);
             label1.Parent = pictureBox2;
@@ -41,20 +40,19 @@ namespace PAWNCoder
             pictureBox2.Location = pos;
             pictureBox2.BackColor = Color.Transparent;
 
-            this.textBox1.KeyDown += new KeyEventHandler(textBox1_KeyDown);
+            this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
             this.textBox2.KeyDown += new KeyEventHandler(textBox2_KeyDown);
             int[] tabstops = new int[] { 23 };
-            SendMessage(textBox1.Handle, EM_SETTABSTOPS, tabstops.Length, tabstops);
-            textBox1.Invalidate();
+            SendMessage(richTextBox1.Handle, EM_SETTABSTOPS, tabstops.Length, tabstops);
+            richTextBox1.Invalidate();
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            standard = label1.ForeColor;
         }
         private void timerevent(Object e, EventArgs unused)
         {
             if (!check)
             {
-                label1.Text = textBox1.Text;
+                label1.Text = richTextBox1.Text;
                 label1.Text = Regex.Replace(label1.Text,"\t", "             ");
                 Size test = new Size(label1.Width + 30, label1.Height + 60);
                 if (test.Width < 180) test.Width = 180;
@@ -69,80 +67,60 @@ namespace PAWNCoder
             }
             check = false;
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            //label1.Text = textBox1.Text;
             int index = label1.Text.IndexOf('\t');
-            label2.Text = textBox1.Text.Length.ToString() + " Zeichen";
-            lastcoding.lastcode = textBox1.Text;
+            label2.Text = richTextBox1.Text.Length.ToString() + " Zeichen";
+            try { richTextBox1.SaveFile("PAWNCoder.last", RichTextBoxStreamType.RichText); } catch { }
         }
-        private void textBox1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void richTextBox1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             check = true;
             if (e.Control && e.KeyValue == 65)
-                textBox1.SelectAll();
-            /*if (e.KeyValue == 9)
-            {
-                
-                string[] lines = Regex.Split(label1.Text, "\r\n");
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    if (lines[i].Length < 1) continue;
-                    for (int u = 0; u < lines[i].Length; u++)
-                    {
-                        if (lines[i][u] == '\t')
-                        {
-                            label2.Text = lines[i].Remove(u, 0);
-                            string blubb = "";
-                            for (int a = u; a < lines[i].Length; a++)
-                            {
-                                blubb = blubb + " ";
-                            }
-                            lines[i] = lines[i].Insert(u, blubb);
-                        }
-                    }
-                }
-                //label1.Text = label1.Text.Replace('\t'.ToString(),blubb );
-            }*/
+                richTextBox1.SelectAll();
         }
         private void textBox2_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.Control && e.KeyValue == 65)
                 textBox2.SelectAll();
         }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] lines = Regex.Split(textBox1.Text, "\r\n");
-            lines[0] = lines[0].Replace('\t'.ToString(), "\\t");
-            lines[0] = Regex.Replace(lines[0], '"'.ToString(), "\\\"");
-            lines[0] = Regex.Replace(lines[0], '"'.ToString(), "\\\"");
-            lines[0] = Regex.Replace(lines[0], '%'.ToString(), "%%");
-            string colorcode = "";
-            if (label1.ForeColor != standard)
-            {
-				colorcode = string.Format("0x{0:X8}", label1.ForeColor.ToArgb());
-				colorcode = colorcode.Substring(colorcode.Length - 6, 6);
-            }
-            textBox2.Text = "new str[" + ((colorcode != "") ? textBox1.Text.Length + colorcode.Length + 2 : textBox1.Text.Length) + "];\r\nformat(str,sizeof str,\"" + ((colorcode != "") ? "{" + colorcode + "}" : "") + "" + lines[0] + "" + ((lines.Length > 1) ? "\\n" : "") + "\");";
+            richTextBox1.Select(0, 0);
 
-            for (int i = 1; i < lines.Length; i++)
+            string convertText = "";
+            Color last = Color.FromName("Black");
+
+            for (int j = 0; j < richTextBox1.TextLength; j++)
             {
-                lines[i] = lines[i].Replace('\t'.ToString(), "\\t");
-                lines[i] = Regex.Replace(lines[i], '"'.ToString(), "\\\"");
-                lines[i] = Regex.Replace(lines[i], '%'.ToString(), "%%");
-                if (lines[i].Length < 1 && i != lines.Length -1) lines[i+1] = "\\n"+lines[i+1];
+                richTextBox1.Select(j, 1);
+                Color k = richTextBox1.SelectionColor;
+                string colorcode = "";
+                if (k != last)
+                {
+                    colorcode = string.Format("0x{0:X8}", k.ToArgb());
+                    colorcode = colorcode.Substring(colorcode.Length - 6, 6);
+                    convertText += "{" + colorcode + "}";
+                    last = k;
+                }
+                convertText += richTextBox1.SelectedText;
+            }
+
+            convertText = Regex.Replace(convertText, '\t'.ToString(), "\\t");
+            convertText = Regex.Replace(convertText, '"'.ToString(), "\\\"");
+            convertText = Regex.Replace(convertText, '%'.ToString(), "%%");
+
+            string[] lines = Regex.Split(convertText, "\n");
+            textBox2.Text = "new str[" + (convertText.Length + (lines.Length - 1)) + "];";
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Length < 1 && i != lines.Length - 1) lines[i + 1] = "\\n" + lines[i + 1];
                 else if(lines[i].Length < 1 && i == lines.Length - 1) continue;
-                else
-                    textBox2.Text = textBox2.Text + "\r\nformat(str,sizeof str,\"%s" + lines[i] + "" + ((i == lines.Length - 1) ? "" : "\\n") + "\",str);";
+                else textBox2.Text += "\r\nformat(str, sizeof str, \"" + (i == 0 ? ("") : ("%s")) + "" + lines[i] + "" + ((i == lines.Length - 1) ? "" : "\\n") + "\", str);";
             }
-            textBox2.Text = textBox2.Text + "\r\nShowPlayerDialog(playerid,dialogid,"+ comboBox1.Text +",\"Headline\",str,\"Ok!\",\"\");";
+            textBox2.Text += "\r\nShowPlayerDialog(playerid, dialogid, " + comboBox1.Text + ", \"Headline\", str, \"Ok!\", \"\");";
         }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -154,28 +132,8 @@ namespace PAWNCoder
             colorDlg.Color = label1.ForeColor;            
             if (colorDlg.ShowDialog() == DialogResult.OK)
             {
-                label1.ForeColor = colorDlg.Color;
+                richTextBox1.SelectionColor = colorDlg.Color;
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
