@@ -142,5 +142,44 @@ namespace PAWNCoder
             AboutBox.Show();
             AboutBox.Focus();
         }
+
+        private void button3_Click(object sender, EventArgs e) // Code degenerieren
+        {
+            bool ok = false;
+            if (richTextBox1.Text.Length > 0)
+            {
+                DialogResult Rewrite = MessageBox.Show("Wollen Sie wirklich den obrigen Code überschreiben?",
+                      "Warnung",
+                      MessageBoxButtons.YesNoCancel,
+                      MessageBoxIcon.Question,
+                      MessageBoxDefaultButton.Button2);
+
+                if (Rewrite == DialogResult.Yes)
+                    ok = true;
+            }
+            if(ok ||richTextBox1.Text.Length == 0)
+            {
+                string text = textBox2.Text;
+                /*text = Regex.Replace("%%","%");
+                text = Regex.Replace("\\t", "\t");*/
+                richTextBox1.Text = "";
+                string[] lines = Regex.Split(text, "\r\n");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (lines[i].Length < 8)
+                        continue;
+                    if (!Regex.IsMatch(lines[i], "format") && !Regex.IsMatch(lines[i], "ShowPlayerDialog"))
+                        continue;
+                    int[] pos = {lines[i].IndexOf('"'),lines[i].LastIndexOf('"')};
+
+                    try
+                    {
+                        string sub = lines[i].Substring(pos[0]+1, pos[1] - pos[0]);
+                        richTextBox1.Text = richTextBox1.Text + sub + "\r\n";
+                    }
+                    catch { }
+                }
+            }
+        }
     }
 }
