@@ -135,5 +135,12 @@ namespace PAWNCoder
                 richTextBox1.SelectionColor = colorDlg.Color;
             }
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Form AboutBox = new AboutBox1();
+            AboutBox.Show();
+            AboutBox.Focus();
+        }
     }
 }

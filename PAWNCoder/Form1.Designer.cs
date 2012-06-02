@@ -139,6 +139,7 @@
             // richTextBox1
             // 
             this.richTextBox1.AcceptsTab = true;
+            this.richTextBox1.DetectUrls = false;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(5, 7);
             this.richTextBox1.MaxLength = 0;
@@ -156,6 +157,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(95, 26);
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // comboBox1
             // 

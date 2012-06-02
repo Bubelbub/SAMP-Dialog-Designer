@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
 [assembly: AssemblyTitle("PAWNCoder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Scripting Tool for Sa-MP")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("PAWNCoder")]
-[assembly: AssemblyCopyright("Copyright © RG & Bubelbub 2012")]
+[assembly: AssemblyCopyright("Copyright © RG + Bubelbub 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
