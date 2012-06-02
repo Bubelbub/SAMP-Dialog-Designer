@@ -1,4 +1,4 @@
-namespace PAWNCoder
+﻿namespace PAWNCoder
 {
 	partial class Form1
 	{
@@ -76,16 +76,16 @@ namespace PAWNCoder
             // 
             this.button1.Location = new System.Drawing.Point(5, 314);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 20);
+            this.button1.Size = new System.Drawing.Size(74, 20);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Generiere";
+            this.button1.Text = "Generieren";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(167, 318);
+            this.label2.Location = new System.Drawing.Point(176, 317);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -113,8 +113,8 @@ namespace PAWNCoder
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -167,7 +167,7 @@ namespace PAWNCoder
             "DIALOG_STYLE_MSGBOX",
             "DIALOG_STYLE_INPUT",
             "DIALOG_STYLE_PASSWORD"});
-            this.comboBox1.Location = new System.Drawing.Point(278, 314);
+            this.comboBox1.Location = new System.Drawing.Point(296, 313);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(173, 21);
             this.comboBox1.TabIndex = 10;
@@ -175,7 +175,7 @@ namespace PAWNCoder
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(457, 314);
+            this.button2.Location = new System.Drawing.Point(475, 314);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 20);
             this.button2.TabIndex = 11;
@@ -185,11 +185,11 @@ namespace PAWNCoder
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(76, 314);
+            this.button3.Location = new System.Drawing.Point(85, 314);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 20);
+            this.button3.Size = new System.Drawing.Size(85, 20);
             this.button3.TabIndex = 12;
-            this.button3.Text = "Degeneriere";
+            this.button3.Text = "Degenerieren";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -215,7 +215,7 @@ namespace PAWNCoder
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
-            this.Text = "SAMP GUI Designer 0.1.3";
+            this.Text = "SAMP GUI Designer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

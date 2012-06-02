@@ -148,7 +148,7 @@ namespace PAWNCoder
             bool ok = false;
             if (richTextBox1.Text.Length > 0)
             {
-                DialogResult Rewrite = MessageBox.Show("Wollen Sie wirklich den obrigen Code überschreiben?",
+                DialogResult Rewrite = MessageBox.Show("Wollen Sie wirklich den obigen Code überschreiben?",
                       "Warnung",
                       MessageBoxButtons.YesNoCancel,
                       MessageBoxIcon.Question,
@@ -157,28 +157,51 @@ namespace PAWNCoder
                 if (Rewrite == DialogResult.Yes)
                     ok = true;
             }
-            if(ok ||richTextBox1.Text.Length == 0)
+            if(ok || richTextBox1.Text.Length == 0)
             {
-                string text = textBox2.Text;
-                /*text = Regex.Replace("%%","%");
-                text = Regex.Replace("\\t", "\t");*/
                 richTextBox1.Text = "";
-                string[] lines = Regex.Split(text, "\r\n");
-                for (int i = 0; i < lines.Length; i++)
+                string text = textBox2.Text;
+                text = Regex.Replace(text, "%s", "");
+                int counter;
+                int co = 0;
+                CaptureCollection cc;
+                GroupCollection gc;
+                Regex r = new Regex("format(.*)\"(.*)\"");
+                MatchCollection mc = r.Matches(text);
+                foreach(Match m in mc)
                 {
-                    if (lines[i].Length < 8)
-                        continue;
-                    if (!Regex.IsMatch(lines[i], "format") && !Regex.IsMatch(lines[i], "ShowPlayerDialog"))
-                        continue;
-                    int[] pos = {lines[i].IndexOf('"'),lines[i].LastIndexOf('"')};
-
+                    gc = m.Groups;
+                    co += 1;
                     try
                     {
-                        string sub = lines[i].Substring(pos[0]+1, pos[1] - pos[0]);
-                        richTextBox1.Text = richTextBox1.Text + sub + "\r\n";
+                        cc = gc[2].Captures;
+                        counter = cc.Count;
+                        for (int ii = 0; ii < counter; ii++)
+                        {
+                            string nTxt = cc[ii].Value;
+                            nTxt = nTxt.Replace("\\n", "\n");
+                            richTextBox1.Text += nTxt /* + (co != mc.Count ? "\n" : "") */;
+                        }
                     }
-                    catch { }
+                    catch{}
                 }
+
+                //string[] lines = Regex.Split(text, "\n");
+                //for (int i = 0; i < lines.Length; i++)
+                //{
+                //    if (lines[i].Length < 8)
+                //        continue;
+                //    if (!Regex.IsMatch(lines[i], "format") && !Regex.IsMatch(lines[i], "ShowPlayerDialog"))
+                //        continue;
+                //    int[] pos = {lines[i].IndexOf('"'),lines[i].LastIndexOf('"')};
+
+                //    try
+                //    {
+                //        string sub = lines[i].Substring(pos[0]+1, pos[1] - pos[0]);
+                //        richTextBox1.Text = richTextBox1.Text + sub + "\r\n";
+                //    }
+                //    catch { }
+                //}
             }
         }
     }
