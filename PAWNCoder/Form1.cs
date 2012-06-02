@@ -119,7 +119,7 @@ namespace PAWNCoder
                 else if(lines[i].Length < 1 && i == lines.Length - 1) continue;
                 else textBox2.Text += "\r\nformat(str, sizeof str, \"" + (i == 0 ? ("") : ("%s")) + "" + lines[i] + "" + ((i == lines.Length - 1) ? "" : "\\n") + "\", str);";
             }
-            textBox2.Text += "\r\nShowPlayerDialog(playerid, dialogid, " + comboBox1.Text + ", \"Headline\", str, \"Ok!\", \"\");";
+            textBox2.Text += "\r\nShowPlayerDialog(playerid, dialogid, " + comboBox1.Text + ", \"" + richTextBox2.Text + "\", str, \"" + richTextBox3.Text + "\", \"" + richTextBox4.Text + "\");";
         }
 
         private void button2_Click(object sender, EventArgs e)
