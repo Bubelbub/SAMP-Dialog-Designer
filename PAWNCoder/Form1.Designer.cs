@@ -1,4 +1,4 @@
-﻿namespace PAWNCoder
+namespace PAWNCoder
 {
 	partial class Form1
 	{
@@ -42,6 +42,9 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,7 +59,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.label1.Location = new System.Drawing.Point(643, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(10, 15);
+            this.label1.Size = new System.Drawing.Size(10, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = " ";
             // 
@@ -113,8 +116,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -193,11 +196,50 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // richTextBox2
+            // 
+            this.richTextBox2.AcceptsTab = true;
+            this.richTextBox2.DetectUrls = false;
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.Location = new System.Drawing.Point(5, 294);
+            this.richTextBox2.MaxLength = 0;
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(256, 19);
+            this.richTextBox2.TabIndex = 13;
+            this.richTextBox2.Text = "Überschrift";
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.AcceptsTab = true;
+            this.richTextBox3.DetectUrls = false;
+            this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox3.Location = new System.Drawing.Point(256, 294);
+            this.richTextBox3.MaxLength = 0;
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(150, 19);
+            this.richTextBox3.TabIndex = 14;
+            this.richTextBox3.Text = "Button1";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.AcceptsTab = true;
+            this.richTextBox4.DetectUrls = false;
+            this.richTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox4.Location = new System.Drawing.Point(400, 294);
+            this.richTextBox4.MaxLength = 0;
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(150, 19);
+            this.richTextBox4.TabIndex = 15;
+            this.richTextBox4.Text = "Button2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1336, 643);
+            this.Controls.Add(this.richTextBox4);
+            this.Controls.Add(this.richTextBox3);
+            this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
@@ -216,6 +258,7 @@
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "SAMP GUI Designer";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -238,8 +281,11 @@
 		private System.Windows.Forms.RichTextBox richTextBox1;
 		private System.Windows.Forms.PictureBox pictureBox4;
 		private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+	        private System.Windows.Forms.Button button2;
+	        private System.Windows.Forms.Button button3;
+	        private System.Windows.Forms.RichTextBox richTextBox2;
+	        private System.Windows.Forms.RichTextBox richTextBox3;
+	        private System.Windows.Forms.RichTextBox richTextBox4;
 	}
 }
 
