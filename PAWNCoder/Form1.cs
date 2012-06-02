@@ -26,7 +26,13 @@ namespace PAWNCoder
             timer.Tick += new EventHandler(timerevent);
             timer.Start();
             InitializeComponent();
+
+            // Laden
             try { richTextBox1.LoadFile("PAWNCoder.last", RichTextBoxStreamType.RichText); } catch { }
+            richTextBox2.Text = Properties.Settings.Default.title;
+            richTextBox3.Text = Properties.Settings.Default.button1;
+            richTextBox4.Text = Properties.Settings.Default.button2;
+
             label2.Text = richTextBox1.Text.Length.ToString() + " Zeichen";
             var pos = this.PointToScreen(label1.Location);
             pos = pictureBox2.PointToClient(pos);
@@ -203,6 +209,24 @@ namespace PAWNCoder
                 //    catch { }
                 //}
             }
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.title = richTextBox2.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.button1 = richTextBox3.Text;
+            Properties.Settings.Default.Save();
+        }
+
+        private void richTextBox4_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.button2 = richTextBox4.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

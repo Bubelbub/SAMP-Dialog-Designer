@@ -67,12 +67,12 @@ namespace PAWNCoder
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(5, 334);
+            this.textBox2.Location = new System.Drawing.Point(5, 340);
             this.textBox2.MaxLength = 0;
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(545, 297);
+            this.textBox2.Size = new System.Drawing.Size(545, 292);
             this.textBox2.TabIndex = 3;
             // 
             // button1
@@ -116,14 +116,14 @@ namespace PAWNCoder
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(556, -2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(820, 660);
+            this.pictureBox1.Size = new System.Drawing.Size(820, 685);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -135,9 +135,9 @@ namespace PAWNCoder
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label3.Location = new System.Drawing.Point(1220, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 9);
+            this.label3.Size = new System.Drawing.Size(118, 9);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Copyright © RG & Bubelbub 2012";
+            this.label3.Text = "Copyright © RG + Bubelbub 2012";
             // 
             // richTextBox1
             // 
@@ -147,7 +147,7 @@ namespace PAWNCoder
             this.richTextBox1.Location = new System.Drawing.Point(5, 7);
             this.richTextBox1.MaxLength = 0;
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(545, 306);
+            this.richTextBox1.Size = new System.Drawing.Size(545, 281);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -207,6 +207,7 @@ namespace PAWNCoder
             this.richTextBox2.Size = new System.Drawing.Size(256, 19);
             this.richTextBox2.TabIndex = 13;
             this.richTextBox2.Text = "Überschrift";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // richTextBox3
             // 
@@ -219,6 +220,7 @@ namespace PAWNCoder
             this.richTextBox3.Size = new System.Drawing.Size(150, 19);
             this.richTextBox3.TabIndex = 14;
             this.richTextBox3.Text = "Button1";
+            this.richTextBox3.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
             // 
             // richTextBox4
             // 
@@ -231,6 +233,7 @@ namespace PAWNCoder
             this.richTextBox4.Size = new System.Drawing.Size(150, 19);
             this.richTextBox4.TabIndex = 15;
             this.richTextBox4.Text = "Button2";
+            this.richTextBox4.TextChanged += new System.EventHandler(this.richTextBox4_TextChanged);
             // 
             // Form1
             // 
@@ -258,7 +261,6 @@ namespace PAWNCoder
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "SAMP GUI Designer";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -281,11 +283,11 @@ namespace PAWNCoder
 		private System.Windows.Forms.RichTextBox richTextBox1;
 		private System.Windows.Forms.PictureBox pictureBox4;
 		private System.Windows.Forms.ComboBox comboBox1;
-	        private System.Windows.Forms.Button button2;
-	        private System.Windows.Forms.Button button3;
-	        private System.Windows.Forms.RichTextBox richTextBox2;
-	        private System.Windows.Forms.RichTextBox richTextBox3;
-	        private System.Windows.Forms.RichTextBox richTextBox4;
+	    private System.Windows.Forms.Button button2;
+	    private System.Windows.Forms.Button button3;
+	    private System.Windows.Forms.RichTextBox richTextBox2;
+	    private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBox4;
 	}
 }
 

@@ -1,5 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PAWNCoder.Properties" GeneratedClassName="Settings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="title" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Überschrift</Value>
+    </Setting>
+    <Setting Name="button1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Button 1</Value>
+    </Setting>
+    <Setting Name="button2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Button 2</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

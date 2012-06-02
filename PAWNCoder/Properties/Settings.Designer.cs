@@ -22,5 +22,41 @@ namespace PAWNCoder.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Überschrift")]
+        public string title {
+            get {
+                return ((string)(this["title"]));
+            }
+            set {
+                this["title"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Button 1")]
+        public string button1 {
+            get {
+                return ((string)(this["button1"]));
+            }
+            set {
+                this["button1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Button 2")]
+        public string button2 {
+            get {
+                return ((string)(this["button2"]));
+            }
+            set {
+                this["button2"] = value;
+            }
+        }
     }
 }
