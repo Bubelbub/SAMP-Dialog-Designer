@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace PAWNCoder
 {
@@ -18,14 +19,19 @@ namespace PAWNCoder
         [DllImport("User32.dll")]
         static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int[] lParam);
         bool check = false;
+        string savepath = "";
         PAWNCoder.Properties.Settings lastcoding = new PAWNCoder.Properties.Settings();
         public Form1()
         {
+            InitializeComponent();
+
+            saveFileDialog1.Filter = "SAMP PAWN Format|*.pwn";
+            saveFileDialog1.Title = "Code speichern";
+
             Timer timer = new Timer();
             timer.Interval = 750;
             timer.Tick += new EventHandler(timerevent);
             timer.Start();
-            InitializeComponent();
 
             // Laden
             richTextBox1.Rtf = Properties.Settings.Default.lastcode;
@@ -33,6 +39,7 @@ namespace PAWNCoder
             richTextBox3.Text = Properties.Settings.Default.button1;
             richTextBox4.Text = Properties.Settings.Default.button2;
 
+            label4.Text = "";
             label2.Text = richTextBox1.Text.Length.ToString() + " Zeichen";
             var pos = this.PointToScreen(label1.Location);
             pos = pictureBox2.PointToClient(pos);
@@ -48,6 +55,8 @@ namespace PAWNCoder
 
             this.richTextBox1.KeyDown += new KeyEventHandler(richTextBox1_KeyDown);
             this.textBox2.KeyDown += new KeyEventHandler(textBox2_KeyDown);
+            //this.KeyDown += new KeyEventHandler(Form1_KeyDown);
+
             int[] tabstops = new int[] { 23 };
             SendMessage(richTextBox1.Handle, EM_SETTABSTOPS, tabstops.Length, tabstops);
             richTextBox1.Invalidate();
@@ -81,6 +90,7 @@ namespace PAWNCoder
             label2.Text = richTextBox1.Text.Length.ToString() + " Zeichen";
             Properties.Settings.Default.lastcode = richTextBox1.Rtf.ToString();
             Properties.Settings.Default.Save();
+            label4.Text = "";
         }
 
         private void richTextBox1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -88,12 +98,16 @@ namespace PAWNCoder
             check = true;
             if (e.Control && e.KeyValue == 65)
                 richTextBox1.SelectAll();
+            else if (e.Control && e.KeyValue == 83)
+                speichernToolStripMenuItem_Click(new object[] { }, new EventArgs { });
         }
 
         private void textBox2_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.Control && e.KeyValue == 65)
                 textBox2.SelectAll();
+            else if (e.Control && e.KeyValue == 83)
+                speichernToolStripMenuItem_Click(new object[] { }, new EventArgs { });
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -242,11 +256,56 @@ namespace PAWNCoder
             richTextBox4.Text = Properties.Settings.Default.Properties["button2"].DefaultValue.ToString();
             textBox2.Text = "";
             comboBox1.SelectedIndex = -1;
+            savepath = "";
         }
 
         private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (savepath == "")
+            {
+                saveFileDialog1.ShowDialog();
+                if (saveFileDialog1.FileName != "")
+                {
+                    FileStream fs =
+                       (FileStream)saveFileDialog1.OpenFile();
+                    ASCIIEncoding enc = new ASCIIEncoding();
+                    fs.Write(enc.GetBytes(textBox2.Text), 0, textBox2.Text.Length);
+                    fs.Close();
+                    savepath = saveFileDialog1.FileName;
+                    label4.Text = "Datei gespeichert";
+                }
+            }
+            else
+            {
+                FileStream fs = new FileStream(savepath,FileMode.OpenOrCreate);
+                ASCIIEncoding enc = new ASCIIEncoding();
+                fs.Write(enc.GetBytes(textBox2.Text), 0, textBox2.Text.Length);
+                fs.Close();
+                label4.Text = "Datei gespeichert";
+            }
+        }
 
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+        }
+
+        private void speichernUnterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.FileName != "")
+            {
+                try
+                {
+                    FileStream fs =
+                       (FileStream)saveFileDialog1.OpenFile();
+                    ASCIIEncoding enc = new ASCIIEncoding();
+                    fs.Write(enc.GetBytes(textBox2.Text), 0, textBox2.Text.Length);
+                    fs.Close();
+                    savepath = saveFileDialog1.FileName;
+                    label4.Text = "Datei gespeichert";
+                }
+                catch { }
+            }
         }
     }
 }
