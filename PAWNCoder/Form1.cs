@@ -28,7 +28,7 @@ namespace PAWNCoder
             InitializeComponent();
 
             // Laden
-            try { richTextBox1.LoadFile("PAWNCoder.last", RichTextBoxStreamType.RichText); } catch { }
+            richTextBox1.Rtf = Properties.Settings.Default.lastcode;
             richTextBox2.Text = Properties.Settings.Default.title;
             richTextBox3.Text = Properties.Settings.Default.button1;
             richTextBox4.Text = Properties.Settings.Default.button2;
@@ -54,6 +54,7 @@ namespace PAWNCoder
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
         }
+
         private void timerevent(Object e, EventArgs unused)
         {
             if (!check)
@@ -73,18 +74,22 @@ namespace PAWNCoder
             }
             check = false;
         }
+
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             int index = label1.Text.IndexOf('\t');
             label2.Text = richTextBox1.Text.Length.ToString() + " Zeichen";
-            try { richTextBox1.SaveFile("PAWNCoder.last", RichTextBoxStreamType.RichText); } catch { }
+            Properties.Settings.Default.lastcode = richTextBox1.Rtf.ToString();
+            Properties.Settings.Default.Save();
         }
+
         private void richTextBox1_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             check = true;
             if (e.Control && e.KeyValue == 65)
                 richTextBox1.SelectAll();
         }
+
         private void textBox2_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.Control && e.KeyValue == 65)
@@ -227,6 +232,21 @@ namespace PAWNCoder
         {
             Properties.Settings.Default.button2 = richTextBox4.Text;
             Properties.Settings.Default.Save();
+        }
+
+        private void neuToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Rtf = Properties.Settings.Default.Properties["lastcode"].DefaultValue.ToString();
+            richTextBox2.Text = Properties.Settings.Default.Properties["title"].DefaultValue.ToString();
+            richTextBox3.Text = Properties.Settings.Default.Properties["button1"].DefaultValue.ToString();
+            richTextBox4.Text = Properties.Settings.Default.Properties["button2"].DefaultValue.ToString();
+            textBox2.Text = "";
+            comboBox1.SelectedIndex = -1;
+        }
+
+        private void speichernToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

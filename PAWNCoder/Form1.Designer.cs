@@ -45,10 +45,16 @@ namespace PAWNCoder
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.neuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -65,9 +71,8 @@ namespace PAWNCoder
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(5, 340);
+            this.textBox2.Location = new System.Drawing.Point(5, 360);
             this.textBox2.MaxLength = 0;
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -77,7 +82,7 @@ namespace PAWNCoder
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(5, 314);
+            this.button1.Location = new System.Drawing.Point(5, 334);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 20);
             this.button1.TabIndex = 4;
@@ -88,7 +93,7 @@ namespace PAWNCoder
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(176, 317);
+            this.label2.Location = new System.Drawing.Point(176, 337);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -123,7 +128,7 @@ namespace PAWNCoder
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(556, -2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(820, 685);
+            this.pictureBox1.Size = new System.Drawing.Size(820, 703);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -144,7 +149,7 @@ namespace PAWNCoder
             this.richTextBox1.AcceptsTab = true;
             this.richTextBox1.DetectUrls = false;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(5, 7);
+            this.richTextBox1.Location = new System.Drawing.Point(5, 27);
             this.richTextBox1.MaxLength = 0;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(545, 281);
@@ -170,7 +175,7 @@ namespace PAWNCoder
             "DIALOG_STYLE_MSGBOX",
             "DIALOG_STYLE_INPUT",
             "DIALOG_STYLE_PASSWORD"});
-            this.comboBox1.Location = new System.Drawing.Point(296, 313);
+            this.comboBox1.Location = new System.Drawing.Point(296, 333);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(173, 21);
             this.comboBox1.TabIndex = 10;
@@ -178,7 +183,7 @@ namespace PAWNCoder
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(475, 314);
+            this.button2.Location = new System.Drawing.Point(475, 334);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 20);
             this.button2.TabIndex = 11;
@@ -188,7 +193,7 @@ namespace PAWNCoder
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(85, 314);
+            this.button3.Location = new System.Drawing.Point(85, 334);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(85, 20);
             this.button3.TabIndex = 12;
@@ -201,7 +206,7 @@ namespace PAWNCoder
             this.richTextBox2.AcceptsTab = true;
             this.richTextBox2.DetectUrls = false;
             this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.Location = new System.Drawing.Point(5, 294);
+            this.richTextBox2.Location = new System.Drawing.Point(5, 314);
             this.richTextBox2.MaxLength = 0;
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(256, 19);
@@ -214,7 +219,7 @@ namespace PAWNCoder
             this.richTextBox3.AcceptsTab = true;
             this.richTextBox3.DetectUrls = false;
             this.richTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.Location = new System.Drawing.Point(256, 294);
+            this.richTextBox3.Location = new System.Drawing.Point(256, 314);
             this.richTextBox3.MaxLength = 0;
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(150, 19);
@@ -227,7 +232,7 @@ namespace PAWNCoder
             this.richTextBox4.AcceptsTab = true;
             this.richTextBox4.DetectUrls = false;
             this.richTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox4.Location = new System.Drawing.Point(400, 294);
+            this.richTextBox4.Location = new System.Drawing.Point(400, 314);
             this.richTextBox4.MaxLength = 0;
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(150, 19);
@@ -235,11 +240,44 @@ namespace PAWNCoder
             this.richTextBox4.Text = "Button2";
             this.richTextBox4.TextChanged += new System.EventHandler(this.richTextBox4_TextChanged);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.neuToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1336, 24);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // neuToolStripMenuItem
+            // 
+            this.neuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.neuToolStripMenuItem1,
+            this.speichernToolStripMenuItem});
+            this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.neuToolStripMenuItem.Text = "Datei";
+            // 
+            // neuToolStripMenuItem1
+            // 
+            this.neuToolStripMenuItem1.Name = "neuToolStripMenuItem1";
+            this.neuToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.neuToolStripMenuItem1.Text = "Neu";
+            this.neuToolStripMenuItem1.Click += new System.EventHandler(this.neuToolStripMenuItem1_Click);
+            // 
+            // speichernToolStripMenuItem
+            // 
+            this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.speichernToolStripMenuItem.Text = "Speichern";
+            this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1336, 643);
+            this.ClientSize = new System.Drawing.Size(1336, 661);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
@@ -256,7 +294,9 @@ namespace PAWNCoder
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
@@ -265,6 +305,8 @@ namespace PAWNCoder
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,6 +330,11 @@ namespace PAWNCoder
 	    private System.Windows.Forms.RichTextBox richTextBox2;
 	    private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem neuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem neuToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 	}
 }
 
