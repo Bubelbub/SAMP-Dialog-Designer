@@ -50,6 +50,8 @@ namespace PAWNCoder
             this.neuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.speichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.speichernUnterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,7 +79,7 @@ namespace PAWNCoder
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(545, 292);
+            this.textBox2.Size = new System.Drawing.Size(545, 278);
             this.textBox2.TabIndex = 3;
             // 
             // button1
@@ -121,8 +123,8 @@ namespace PAWNCoder
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -254,30 +256,52 @@ namespace PAWNCoder
             // 
             this.neuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.neuToolStripMenuItem1,
-            this.speichernToolStripMenuItem});
+            this.speichernToolStripMenuItem,
+            this.speichernUnterToolStripMenuItem});
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.neuToolStripMenuItem.Text = "Datei";
             // 
             // neuToolStripMenuItem1
             // 
             this.neuToolStripMenuItem1.Name = "neuToolStripMenuItem1";
-            this.neuToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.neuToolStripMenuItem1.Size = new System.Drawing.Size(132, 22);
             this.neuToolStripMenuItem1.Text = "Neu";
             this.neuToolStripMenuItem1.Click += new System.EventHandler(this.neuToolStripMenuItem1_Click);
             // 
             // speichernToolStripMenuItem
             // 
             this.speichernToolStripMenuItem.Name = "speichernToolStripMenuItem";
-            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.speichernToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.speichernToolStripMenuItem.Text = "Speichern";
             this.speichernToolStripMenuItem.Click += new System.EventHandler(this.speichernToolStripMenuItem_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
+            // speichernUnterToolStripMenuItem
+            // 
+            this.speichernUnterToolStripMenuItem.Name = "speichernUnterToolStripMenuItem";
+            this.speichernUnterToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.speichernUnterToolStripMenuItem.Text = "Speichern unter...";
+            this.speichernUnterToolStripMenuItem.Click += new System.EventHandler(this.speichernUnterToolStripMenuItem_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(2, 641);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "label4";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1336, 661);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox2);
@@ -335,6 +359,8 @@ namespace PAWNCoder
         private System.Windows.Forms.ToolStripMenuItem neuToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem speichernToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem speichernUnterToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
 	}
 }
 
