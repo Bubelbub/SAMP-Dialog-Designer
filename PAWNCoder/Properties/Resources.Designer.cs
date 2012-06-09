@@ -59,5 +59,12 @@ namespace PAWNCoder.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon hint {
+            get {
+                object obj = ResourceManager.GetObject("hint", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

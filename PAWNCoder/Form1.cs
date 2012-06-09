@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Windows.Media;
 
 namespace PAWNCoder
 {
@@ -113,7 +114,6 @@ namespace PAWNCoder
         private void button1_Click(object sender, EventArgs e)
         {
             richTextBox1.Select(0, 0);
-
             string convertText = "";
             Color last = Color.FromName("Black");
 
@@ -193,6 +193,7 @@ namespace PAWNCoder
                 GroupCollection gc;
                 Regex r = new Regex("format(.*)\"(.*)\"");
                 MatchCollection mc = r.Matches(text);
+                string RdyText = "";
                 foreach(Match m in mc)
                 {
                     gc = m.Groups;
@@ -205,28 +206,43 @@ namespace PAWNCoder
                         {
                             string nTxt = cc[ii].Value;
                             nTxt = nTxt.Replace("\\n", "\n");
-                            richTextBox1.Text += nTxt /* + (co != mc.Count ? "\n" : "") */;
+                            RdyText += nTxt /* + (co != mc.Count ? "\n" : "") */;
                         }
                     }
                     catch{}
                 }
+                richTextBox1.Text = RdyText;
 
-                //string[] lines = Regex.Split(text, "\n");
-                //for (int i = 0; i < lines.Length; i++)
-                //{
-                //    if (lines[i].Length < 8)
-                //        continue;
-                //    if (!Regex.IsMatch(lines[i], "format") && !Regex.IsMatch(lines[i], "ShowPlayerDialog"))
-                //        continue;
-                //    int[] pos = {lines[i].IndexOf('"'),lines[i].LastIndexOf('"')};
+                // Farben System - Umständlich by Bubelbub :D
 
-                //    try
-                //    {
-                //        string sub = lines[i].Substring(pos[0]+1, pos[1] - pos[0]);
-                //        richTextBox1.Text = richTextBox1.Text + sub + "\r\n";
-                //    }
-                //    catch { }
-                //}
+                richTextBox1.Text = Regex.Replace(richTextBox1.Text, "{[0-9abcdefABCDEF]+}", ""); // Farbcodes entfernen
+                int started = 0;
+                int howmany = 0;
+                string color = "";
+                Font fnt = richTextBox1.Font;
+                for (int x = 0; x < RdyText.Length; x++)
+                {
+                    if (RdyText[x] == '{')
+                    {
+                        started = 1;
+                    }
+                    else if (RdyText[x] == '}')
+                    {
+                        howmany++;
+                        Color colorY = System.Drawing.ColorTranslator.FromHtml("#" + color);
+                        richTextBox1.SelectionStart = (x + 1) - (howmany * 8);
+                        richTextBox1.SelectionLength = richTextBox1.Text.Length;
+                        richTextBox1.SelectionFont = fnt;
+                        richTextBox1.SelectionColor = colorY;
+                        color = "";
+                        started = 0;
+                    }
+                    else if (started == 1)
+                    {
+                        color += RdyText[x];
+                    }
+                }
+                richTextBox1.SelectionStart = -1;
             }
         }
 
@@ -250,6 +266,7 @@ namespace PAWNCoder
 
         private void neuToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(richTextBox1.Rtf);
             richTextBox1.Rtf = Properties.Settings.Default.Properties["lastcode"].DefaultValue.ToString();
             richTextBox2.Text = Properties.Settings.Default.Properties["title"].DefaultValue.ToString();
             richTextBox3.Text = Properties.Settings.Default.Properties["button1"].DefaultValue.ToString();
@@ -285,10 +302,6 @@ namespace PAWNCoder
             }
         }
 
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-        }
-
         private void speichernUnterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
@@ -306,6 +319,31 @@ namespace PAWNCoder
                 }
                 catch { }
             }
+        }
+
+        public static Bitmap RtbToBitmap(RichTextBox rtb)
+        {
+            rtb.Update();
+            Bitmap bmp = new Bitmap(rtb.Width, rtb.Height);
+            using (Graphics gr = Graphics.FromImage(bmp))
+            {
+                gr.CopyFromScreen(rtb.PointToScreen(Point.Empty), Point.Empty, rtb.Size);
+            }
+            return bmp;
+        }
+
+        private void überToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form AboutBox = new AboutBox1();
+            AboutBox.Show();
+            AboutBox.Focus();
+        }
+
+        private void wunschVerbesserungEinsendenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Infos = new Form2();
+            Infos.Show();
+            Infos.Focus();
         }
     }
 }
